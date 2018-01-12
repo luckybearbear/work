@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- namespace：需要和Mapper接口的名字(全路径名)保持一致 -->
+  <mapper namespace="com.njwangbo.mapper.ResuemMapper">
+  <resultMap type="Resuem" id="ResuemMap">
+  	<id column="rid" property="rid"/>
+  	<result column="stunum" property="stunum"/>
+  	<result column="sex" property="sex"/>
+  	<result column="major" property="major"/>
+  	<result column="political" property="political"/>
+  	<result column="classes" property="classes"/>
+  	<result column="identity" property="identity"/>
+  	<result column="nation" property="nation"/>
+  	<result column="education" property="education"/>
+  	<result column="tel" property="tel"/>
+  	<result column="graduatetime" property="graduatetime"/>
+  	<result column="enjoy" property="enjoy"/>
+  	<result column="reward" property="reward"/>
+  	<result column="workhistory" property="workhistory"/>
+  	<result column="school" property="school"/>
+  	<result column="img" property="img"/>
+  	<result column="jobinterntion" property="jobinterntion"/>
+  	<association property="student" javaType="Student">
+  		<id column="stunum" property="stunum"/> 
+  		<result column="stuname" property="stuname"/>
+  		<result column="email" property="email"/>
+  	</association>
+  
+  
+  </resultMap>
+  	<insert id="addResume" parameterType="Resuem">
+  		insert into
+  			resuem
+  			(rid,stunum,sex,major,political,classes,identity,nation,education,tel,graduatetime,enjoy,reward,workhistory,school,img,jobinterntion)
+  			values
+  			(#{rid},#{stunum},#{sex},#{major},#{political},#{classes},#{identity},#{nation},#{education},#{tel},#{graduatetime},#{enjoy},#{reward},#{workhistory},#{school},#{img},#{jobinterntion})
+  	</insert>
+  	
+  	<delete id="deleteResuem" parameterType="String">
+  		delete from
+  			resuem
+  		where
+  			stunum=#{stunum}
+  	</delete>
+  	
+  	<select id="getOneResuemByRid" parameterType="String" resultType="Resuem">
+  		select * from resuem where rid=#{rid}
+  	</select>
+  	<select id="getOneResuemByStunum" parameterType="String" resultMap="ResuemMap">
+  		select * from 
+  			resuem r,student s
+  		where 
+  			r.stunum=#{stunum}
+  		and 
+  			r.stunum=s.stunum
+  	</select>
+  	<select id="getAllRusuemByStunum" parameterType="String" resultType="Resuem">
+  		select * from resuem where stunum=#{stunum}
+  	</select>
+  	<update id="updateResuem" parameterType="Resuem">
+  		update resuem set
+	  		stunum=#{stunum},sex=#{sex},major=#{major},political=#{political},classes=#{classes},identity=#{identity},
+	  		nation=#{nation},education=#{education},tel=#{tel},graduatetime=#{graduatetime},enjoy=#{enjoy},reward=#{reward},
+	  		workhistory=#{workhistory},school=#{school},jobinterntion=#{jobinterntion}
+  		where
+  			stunum=#{stunum}
+  		
+  	</update>
+  	<update id="updateimg" parameterType="resuem">
+  		update resuem set
+  			img=#{img}
+  		where
+  			stunum=#{stunum}
+  	</update>
+  
+  </mapper>

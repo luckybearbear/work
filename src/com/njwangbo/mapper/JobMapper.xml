@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- namespace：需要和Mapper接口的名字(全路径名)保持一致 -->
+  <mapper namespace="com.njwangbo.mapper.JobMapper">
+  	<resultMap type="Job" id="JobMap">
+		<id column="jid" property="jid"/>
+		<result column="cid" property="cid"/>
+		<result column="jobname" property="jobname"/>
+		<result column="salary" property="salary"/>
+		<result column="jobdescription" property="jobdescription"/>
+		<result column="starttime" property="starttime"/>
+		<result column="deadline" property="deadline"/>
+		<result column="jobstatus" property="jobstatus"/>
+		<result column="pagenum" property="pagenum"/>
+		
+		<association property="company" javaType="Company">
+			<id column="cid" property="cid"/>
+			<result column="cname" property="cname"/>
+			<result column="ccontact" property="ccontact"/>
+			<result column="location" property="location"/>
+			<result column="site" property="site"/>
+			<result column="description" property="description"/>
+			<result column="industry" property="industry"/>
+		</association>
+		
+	</resultMap>
+	
+	
+	
+	<resultMap type="com.njwangbo.vo.JobVo" id="homeJobMap">
+		<id column="jid" property="jid"/>
+		<result column="cid" property="cid"/>
+		<result column="jobname" property="jobname"/>
+		<result column="salary" property="salary"/>
+		<result column="jobdescription" property="jobdescription"/>
+		<result column="starttime" property="starttime"/>
+		<result column="deadline" property="deadline"/>
+		<result column="jobstatus" property="jobstatus"/>
+		<result column="pagenum" property="pagenum"/>
+		
+		<association property="company" javaType="Company">
+			<id column="cid" property="cid"/>
+			<result column="cname" property="cname"/>
+			<result column="ccontact" property="ccontact"/>
+			<result column="location" property="location"/>
+			<result column="site" property="site"/>
+			<result column="description" property="description"/>
+			<result column="industry" property="industry"/>
+		</association>
+		
+	</resultMap>
+	
+	
+	
+	
+  	
+  	<select id="showSomeJobBySome" parameterType="com.njwangbo.vo.JobVo" resultMap="JobMap">
+		select 
+			*
+		 from 
+		 	job j
+		 inner join
+		 	company c
+		 on
+		 	j.cid = c.cid
+		<where>
+			<if test="jid!= null and '' != jid">
+				and jid like '%${jid}%'
+			</if>
+  			<if test="jobname != null and '' != jobname">
+				and jobname like '%${jobname}%'
+			</if>
+			<if test="salary != null and '' != salary">
+				and salary like '%${salary}%'
+			</if>
+			<if test="jobstatus != null and '' != jobstatus">
+				and jobstatus like '%${jobstatus}%'
+			</if>
+			<if test="deadline!= null and '' != deadline">
+				and deadline like '%${deadline}%'
+			</if>
+			<if test="starttime != null and '' != starttime">
+				and starttime like '%${starttime}%'
+			</if>
+			<if test="cname != null and '' != cname">
+				and cname like '%${cname}%'
+			</if>
+			<if test="location != null and '' != location">
+				and location like '%${location}%'
+			</if>
+  		</where>
+	</select>
+	
+	
+	
+	
+	
+	<select id="showSomeJobByJobStatus" parameterType="com.njwangbo.vo.JobVo" resultMap="homeJobMap">
+		select 
+			*
+		 from 
+		 	job 
+		 inner join
+		 	company
+		 on
+		 	job.cid = company.cid
+		<where>
+			<if test="jobstatus != null and '' != jobstatus">
+				and jobstatus like '%${jobstatus}%'
+			</if>
+			
+  		</where>
+	</select>
+	
+	
+	
+	
+	
+	
+  	
+  	<select id="showAllJob" resultType="Job">
+  		select * from job
+  	</select>
+  	
+  	
+  	<select id="showSomeJObByCid" resultType="Job">
+  		select * from 
+  			job
+  		where
+  			cid=#{cid}
+  	</select>
+  	
+  	
+  	<select id="getOneJobByJid" parameterType="int" resultMap="JobMap">
+  		select * from 
+		 	job 
+		 inner join
+		 	company
+		 on
+		 	job.cid = company.cid
+		 where
+  			jid=#{jid}
+  	</select>
+  	
+ 	<insert id="addJob" parameterType="Job">
+ 		insert into
+ 			job(cid,jobname,salary,jobdescription,starttime,deadline,jobstatus)
+ 			values(#{cid},#{jobname},#{salary},#{jobdescription},#{starttime},#{deadline},#{jobstatus})
+ 	</insert>
+ 	
+ 	<delete id="deleteJobByJid" parameterType="int">
+ 		delete from job where jid=#{jid}
+ 	</delete>
+ 	
+ 	<update id="updateJobByJid" parameterType="Job">
+ 		update
+ 			job
+ 		set
+ 			jobname=#{jobname},salary=#{salary},jobdescription=#{jobdescription},starttime=#{starttime},
+ 			deadline=#{deadline},jobstatus=#{jobstatus}
+ 		where
+ 			jid=#{jid}
+ 	</update>
+  </mapper>

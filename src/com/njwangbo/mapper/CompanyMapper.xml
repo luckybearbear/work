@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- namespace：需要和Mapper接口的名字(全路径名)保持一致 -->
+  <mapper namespace="com.njwangbo.mapper.CompanyMapper">
+ 
+  
+  	<select id="showAllCompany" parameterType="com.njwangbo.vo.CompanyVo" resultType="com.njwangbo.vo.CompanyVo">
+  		select * from company
+  	</select>
+  	
+  	<select id="getOneCompanyByCid" parameterType="int" resultType="Company">
+  		select * from 
+  			company 
+  		where
+  			cid=#{cid}
+  	</select>
+  	
+  	<select id="getSomeCompanyBySome" parameterType="com.njwangbo.vo.CompanyVo" resultType="com.njwangbo.vo.CompanyVo">
+  		select * from
+  			company
+  		<where>
+  			<if test="cid != null and '' != cid">
+  				and cid like '%${cid}'
+  			</if>
+  		
+  			<if test="cname != null and '' != cname">
+  				and cname like '%${cname}'
+  			</if>
+  		
+  			<if test="industry != null and '' != industry">
+  				and industry like '%${industry}'
+  			</if>
+  		</where>
+  	</select>
+  	<!-- 企业登录验证 -->
+  	<select id="getOneCompanyByCloginname" parameterType="String" resultType="Company">
+  		select * from
+  			company
+  		where
+  			cloginname=#{cloginname}
+  	</select>
+  	
+  	<!--企业注册-->
+  	<insert id="addCompanyByCompany" parameterType="Company">
+ 		insert into
+ 			company(cloginname,cloginpwd,cname,ccontact,location,site,description,industry)
+ 			values(#{cloginname},#{cloginpwd},#{cname},#{ccontact},#{location},#{site},#{description},#{industry})
+ 	</insert>
+ 	
+ 	<delete id="deleteCompany" parameterType="int">
+ 		delete from company where cid=#{id}
+ 	</delete>
+ 	
+ 	<update id="updateCompany" parameterType="Company">
+ 		update
+ 			company
+ 		set
+ 			cloginname=#{cloginname},cloginpwd=#{cloginpwd},cname=#{cname},
+ 			ccontact=#{ccontact},location=#{location},site=#{site},description=#{description},
+ 			industry=#{industry}
+ 		where
+ 			cid=#{cid}
+ 	</update>
+  </mapper>

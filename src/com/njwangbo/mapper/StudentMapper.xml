@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- namespace：需要和Mapper接口的名字(全路径名)保持一致 -->
+  <mapper namespace="com.njwangbo.mapper.StudentMapper">
+ 	
+  	<select id="showAllStudent" parameterType="com.njwangbo.vo.StudentVo" resultType="com.njwangbo.vo.StudentVo">
+  		select * from student
+  	</select>
+  	
+  	<select id="getOneStudentByStunum" parameterType="String" resultType="Student">
+  		select * from 
+  			student 
+  		where
+  			stunum=#{stunum}
+  	</select>
+  	
+ 	<insert id="addStudent" parameterType="Student">
+ 		insert into
+ 			student(stunum,stuname,stuloginpwd,emplstatus)
+ 			values(#{stunum},#{stuname},#{stuloginpwd},#{emplstatus})
+ 	</insert>
+ 	
+ 	<delete id="deleteStudent" parameterType="String">
+ 		delete from student where stunum=#{stunum}
+ 	</delete>
+ 	
+ 	<update id="updateStudent" parameterType="Student">
+ 		update
+ 			student
+ 		set
+ 			stuname=#{stuname},emplstatus=#{emplstatus},email=#{email},stuloginpwd=#{stuloginpwd}
+ 		where
+ 			stunum=#{stunum}
+ 	</update>
+ 	
+ 	<select id="getSomeStudentBySome" parameterType="com.njwangbo.vo.StudentVo" resultType="com.njwangbo.vo.StudentVo">
+ 		select * from
+ 			student
+ 			<where>
+ 				<if test="stunum != null and '' != stunum">
+ 					and stunum like '%${stunum}%'
+ 				</if>
+ 			
+ 				<if test="stuname != null and '' != stuname">
+ 					and stuname like '%${stuname}%'
+ 				</if>
+ 			
+ 				<if test="emplstatus != null and '' != emplstatus">
+ 					and emplstatus like '%${emplstatus}%'
+ 				</if>
+ 			</where>
+ 	</select>
+ 	
+ 	
+ 	
+  </mapper>

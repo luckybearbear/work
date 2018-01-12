@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- namespace：需要和Mapper接口的名字(全路径名)保持一致 -->
+<mapper namespace="com.njwangbo.mapper.EmployMapper">
+	<resultMap type="com.njwangbo.vo.EmployVo" id="EmployMap">
+	<!-- 在使用1-1，1-n的关系模型时，切记使用ID来唯一标识创建的对象 -->
+		<id column="employid" property="employid"/>
+		<result column="jid" property="jid"/>
+		<result column="cid" property="cid"/>
+		<result column="stunum" property="stunum"/>
+		<result column="employstatus" property="employstatus"/>
+		<result column="employtime" property="employtime"/>
+		<association property="company" javaType="Company">
+			<id  column="cid" property="cid"/>
+			<result column="cname" property="cname"/>
+			<result column="ccontact" property="ccontact"/>
+			<result column="location" property="location"/>
+		</association>
+		<association property="job" javaType="Job">
+			<id  column="jid" property="jid"/>
+			<result column="jobname" property="jobname"/>
+		</association>
+		<association property="student" javaType="Student">
+			<id  column="Stunum" property="stunum"/>
+			<result column="stuname" property="stuname"/>
+		</association>
+		
+	</resultMap>
+
+	<insert id="addEmploy" parameterType="Employ">
+	 insert into employ(stunum,jid,cid,employstatus,employtime)
+	 values(#{stunum},#{jid},#{cid},#{employstatus},#{employtime})
+	</insert>
+	<delete id="deleteEmploy" parameterType="int">
+		delete from employ where employid=#{employid}
+	</delete>
+	<update id="updateEmploy" parameterType="Employ">
+		update 
+			employ
+		set
+			employstatus=#{employstatus}
+		where
+			employid=#{employid}
+	</update>
+	
+	<select id="getSomeEmployByStunum" parameterType="com.njwangbo.vo.EmployVo" resultMap="EmployMap">
+		select * from employ e 
+		left join job j on e.jid=j.jid 
+		left join company c on e.cid = c.cid 
+		left join student s on e.stunum = s.stunum
+		where
+		e.stunum=#{stunum}
+	</select>
+	<select id="getSomeEmployByJid" parameterType="com.njwangbo.vo.EmployVo" resultMap="EmployMap">
+		select * from employ e 
+		left join job j on e.jid=j.jid 
+		left join company c on e.cid = c.cid 
+		left join student s on e.stunum = s.stunum
+		where
+		e.jid=#{jid}
+	</select>
+	<select id="getAllEmploy" parameterType="com.njwangbo.vo.EmployVo" resultMap="EmployMap">
+		select * from employ e 
+		left join job j on e.jid=j.jid 
+		left join company c on e.cid = c.cid 
+		left join student s on e.stunum = s.stunum
+	</select>
+	<select id="getOneEmployByEmployId" parameterType="int" resultMap="EmployMap">
+		select * from employ e 
+		left join job j on e.jid=j.jid 
+		left join company c on e.cid = c.cid 
+		left join student s on e.stunum = s.stunum
+		where
+		e.employid=#{employid}
+	</select>
+	<select id="getSomeEmployBySome" parameterType="com.njwangbo.vo.EmployVo" resultMap="EmployMap">
+		select * from employ e 
+		left join job j on e.jid=j.jid 
+		left join company c on e.cid = c.cid 
+		left join student s on e.stunum = s.stunum
+		<where>
+			<if test="stunum !=null and '' != stunum">
+				and e.stunum like '%${stunum}%'
+			</if>
+			<if test="stuname !=null and '' != stuname">
+				and s.stuname like '%${stuname}%'
+			</if>
+			<if test="cname !=null and '' != cname">
+				and c.cname like '%${cname}%'
+			</if>
+			<if test="cid !=null and '' != cid">
+				and e.cid like '%${cid}%'
+			</if>
+			<if test="jid !=null and '' != jid">
+				and e.jid like '%${jid}%'
+			</if>
+			<if test="jobname !=null and '' != jobname">
+				and j.jobname like '%${jobname}%'
+			</if>
+			<if test="employstatus !=null and '' != employstatus">
+				and e.employstatus like '%${employstatus}%'
+			</if>
+	
+		</where>
+	</select>
+	
+</mapper>
