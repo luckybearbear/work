@@ -1,0 +1,89 @@
+@charset "utf-8";
+/* CSS Document */
+body{ margin:0; padding:0; font-size:12px; font-family:"宋体"; background:#fff;}
+img{ border:none;}
+.btn{ border:none;cursor: pointer;}
+.btn2{background:url(../images/btn2.jpg) no-repeat; height:24px; width:70px; }
+.btn3{background:url(../images/btn3.jpg) no-repeat; height:33px; width:162px; }
+.textborder{ border:1px solid #afafaf;}
+a{ color:#5b5b5b; text-decoration:none;}
+a:hover{ color:#FF0000; text-decoration:underline;}
+.L_float {float:left;}
+.R_float {float:right;}
+.clearboth {clear:both;}
+.clearbug {height:0;}
+.clearbug2 {height:0;}
+.clearfix {display:block;}
+
+em.error { color: red; }
+
+#loginform label {color:#5b5b5b; text-align:right;}
+#loginform .textborder {width:110px;}
+
+.formblk{padding:20px;clear:both; height:266px}
+.formblk div{margin-bottom:10px}
+.formblk{clear:both;padding-bottom:15px;text-align:left}
+
+#content{ width:978px; margin:0 auto;}
+#banner{ background:url(../images/bannerblue.jpg) no-repeat; height:74px; color:#fff; padding:10px 20px 0 20px;}
+#banner a{ color:#fff; text-decoration:none;}
+#banner a:hover{ color:#fff; text-decoration:underline;}
+#left{ width:703px; float:left;}
+#right{ width:255px; float:right; border:1px solid #d9d9d9;}
+#main{ padding:5px 5px 30px 5px;}
+#search{color:#54585b;}
+.block1{ float:left; width:322px;}
+.block2{ float:right; width:322px;}
+.list1{}
+.list1 ul{ margin:0; padding:0; list-style:none; margin:5px;}
+.forgetpsw a{ text-decoration:none; color:#1f800c;}
+.forgetpsw a:hover{ text-decoration:underline; color:#1f800c;}
+.reg{ text-align:center; padding:15px 0; color:#595959;}
+
+.bottomdiv
+{
+    width:978px;
+	font-size: 12px;
+	font-family: "宋体";
+	font-style: normal;
+	line-height: 1.5;
+	color: #025776;
+	border: 1px solid #7F9DB9;
+	background-position: center center;
+	letter-spacing: 2px;
+	text-align: center;
+	vertical-align: middle;
+	word-spacing: 2px;
+	height: 68px;
+	margin-top:10px;	
+}
+
+.blocktable{ float:left; width:99%;}
+.listtable{text-align: center;padding-left:10px; padding-top:10px ; line-height:24px; width:100%; overflow:hidden;
+ text-overflow:ellipsis; white-space:nowrap;}
+ .table-grid { border-left:1px solid #dddddd;border-top:1px solid #dddddd;}
+ .table-grid thead th {text-align:left; font-size:1.1em; line-height:2em;}
+ .table-grid td { border-right:1px solid #dddddd;border-bottom:1px solid #dddddd;}
+ 
+ .table-grid1 { border-left:1px solid #dddddd;border-top:1px solid #dddddd;}
+ .table-grid1 thead th {text-align:center; font-size:1.1em; line-height:2em;}
+ .table-grid1 td { border-right:1px solid #dddddd;border-bottom:1px solid #dddddd;}
+ /*-----顶部+导航*/
+    #topbar-main {width:960px; margin:1px auto;}
+    #topbar-nav span{padding:8px 10px;}
+    #topbar-empl {float:right; color:#fee; margin:0 0 0 15px; padding:6px 20px 5px 10px;_padding:7px 20px 6px 10px; }
+    #topbar-empl a {color:#fff;font-size:1.1em; line-height:1.6em; font-weight:bold; text-decoration:none;}
+    /*导航*/
+    #nav-box a{ color:#3d3d3d; text-decoration:none;}
+	#nav-box a:hover{ color:#0960d6; text-decoration:underline;}
+	.font3{ font-weight:bold; font-size:14px;}
+	#nav-box{ margin:5px 0;}
+	#logo{ float:left; width:218px;}
+	#navlist{ float:left;}
+	.nav-li{ float:left; width:243px; line-height:24px;}
+	
+	.fenge{height:3px; background:#0099CC;}
+ /*-----登录页-系统介绍----*/
+.login-intro1,.login-intro2{ width:174px; margin:20px 0 0 0; padding:10px 9px 0 9px; float:left; height:180px;}
+.login-intro1 h5,.login-intro2 h5{ font-size:12px; color:#005e8c; margin:0; padding:0; line-height:20px;}
+.login-intro1 p,.login-intro2 p{ line-height:24px; margin:0; padding:0; text-indent:24px;}

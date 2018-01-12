@@ -1,0 +1,87 @@
+@charset "utf-8";
+/* CSS Document */
+body{ margin:0; padding:0; font-size:12px; font-family:"宋体"; background:#fff;}
+img{ border:none;}
+.btn{ border:none; cursor:pointer;margin:0 10px}
+.btn2{background:url(../images/btn2.jpg) no-repeat; height:24px; width:70px;}
+.btn3{background:url(../images/btn3.jpg) no-repeat; height:33px; width:162px;}
+.textborder{ border:1px solid #afafaf;}
+a{ color:#5b5b5b; text-decoration:none;}
+a:hover{ color:#FF0000; text-decoration:underline;}
+.L_float {float:left;}
+.R_float {float:right;}
+.clearboth {clear:both;}
+.clearbug {height:0;}
+.clearbug2 {height:0;}
+.clearfix {display:block;}
+.area{width: 60px;}
+em.error { background:url("../images/unchecked.gif") no-repeat left center; padding-left: 1.2em;color:red;}
+em.success { background:url("../images/checked.gif") no-repeat left center;padding-left: 1.2em;}
+input.error { border: 1px dotted red; }
+
+.font1 {color:#FF6600;}
+.font2 {color:#289606;text-decoration:none;}
+.font3 {color:#0543A0;}
+    
+#content{ width:978px; margin:0 auto;}
+#banner{ background:url(../images/bannergreen.jpg) no-repeat; height:74px; color:#fff; padding:10px 20px 0 20px;}
+#banner a{ color:#fff; text-decoration:none;}
+#banner a:hover{ color:#fff; text-decoration:underline;}
+#left{ width:703px; float:left;}
+#right{ width:255px; float:right; border:1px solid #d9d9d9;}
+#main{ padding:5px 5px 30px 5px;}
+#search{color:#54585b;}
+.block1{ float:left; width:322px;}
+.block2{ float:right; width:322px;}
+.title1{ color:#489e00; background:url(../images/linegreen.jpg) no-repeat bottom; font-size:14px; padding:10px;}
+.title2{ background:url(../images/stulogin.gif) no-repeat center left;}
+.list1{}
+.list1 ul{ margin:0; padding:0; list-style:none; margin:5px;}
+.list1 ul li{ background:url(../images/arrow1.jpg) no-repeat center left; padding-left:20px; line-height:24px; width:315px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+/*.login{ background:url(../images/login-bg.jpg) repeat-x; height:182px; padding:10px 20px; border-bottom:1px solid #d9d9d9;}*/
+.login{ background:url(../images/login-bg.jpg) repeat-x; height:198px; padding:10px 20px; border-bottom:1px solid #d9d9d9;}
+.forgetpsw a{ text-decoration:none; color:#1f800c;}
+.forgetpsw a:hover{ text-decoration:underline; color:#1f800c;}
+/*.reg{ text-align:center; padding:38px 0; color:#595959;}*/
+.reg{ text-align:center; padding:3px 0; color:#595959;}
+.bottomdiv 
+{
+    width:978px;
+	font-size: 12px;
+	font-family: "宋体";
+	font-style: normal;
+	line-height: 1.5;
+	color: #30511C;
+	background-image: url(../images/sbottom.gif);
+	border: 1px solid #8CB387;
+	background-position: center center;
+	letter-spacing: 2px;
+	text-align: center;
+	vertical-align: middle;
+	word-spacing: 2px;
+	height: 68px;
+	margin-top:10px;
+}
+/*-----顶部+导航*/
+	#topbar {height:35px; width:100%; float:left; background:url(../images/topbar-bg.gif) repeat-x scroll 0 bottom transparent;}
+    #topbar-main {width:960px; margin:1px auto;height:33px;line-height:33px;}   
+    #topbar-empl {line-height:33px;float:right; color:#fee; margin:0 0 0 15px; padding:0 20px 0 10px;_padding:7px 20px 7px 10px;background:url(../images/topbar-employer-bg.gif) repeat-x scroll 0 0 transparent; }
+    #topbar-empl a {color:#fff;font-size:1.1em;  font-weight:bold; text-decoration:none;}
+    /*导航*/
+    #nav-box a{ color:#3d3d3d; text-decoration:none;}
+	#nav-box a:hover{ color:#0960d6; text-decoration:underline;}
+	.font3{ font-weight:bold; font-size:14px;}
+	#nav-box{ margin:5px 0;}
+	#logo{ float:left; width:218px;}
+	#navlist{ float:left;}
+	.nav-li{ float:left; width:243px; line-height:24px;}
+	
+	.fenge{height:3px; background:#339900;}
+/*-----登录页-系统介绍----*/
+.login-introduce{margin-top:.8em; border:1px solid #dedede; background:url(../images/login-intro-bg.jpg) repeat-x; height:214px;}
+.login-intro1{background:url(../images/login-intro-border.jpg) no-repeat right center;}
+.login-intro1,.login-intro2{ width:174px; margin:20px 0 0 0; padding:10px 9px 0 9px; float:left; height:180px;}
+.login-intro1 h5,.login-intro2 h5{ font-size:12px; color:#57a30f; margin:0; padding:0; line-height:20px;}
+.login-intro1 p,.login-intro2 p{ line-height:24px; margin:0; padding:0; text-indent:24px;}
+
+
